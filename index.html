@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <script src="./bootstrap.min.js"></script>
+    <script src="./jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>To Do List</title>
+</head>
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg" style="background-color:#e3f2fd;">
+            <div class="container-md">
+              <a class="navbar-brand" href="#">To-Do List</a>
+              <form class="d-flex" role="Login"  onsubmit="return validate(username,pwd,callback)" >
+                <input class="form-control me-2" id="username" type="text" placeholder="username" aria-label="Username">
+                <input class="form-control me-2" id="pwd" type="number" placeholder="password" aria-label="Password">
+                <button class="btn btn-outline-success" id="button" type="submit" >LogIn</button>
+              </form>
+            </div>
+        </nav>
+
+    </div>
+
+    <script>
+
+        // LOGIN VALIDATION
+        let button=document.getElementById("button");
+        let username,password,message;
+        button.addEventListener("click",(e)=>{ 
+                username=document.getElementById("username").value;
+                pwd=document.getElementById("pwd").value;
+                validate(username,pwd,(message)=>{
+                alert(message);
+        });
+    })
+        
+
+
+    let validate=(username,pwd,callback)=>{
+    if(username.trim()==""||pwd.trim()==""){
+        callback("fields cannot be empty!")
+        return false;
+    }
+    else if(username!="admin"||pwd!="12345"){
+        callback("Invalid login credentials");
+        return false;
+
+    }
+    else {
+        callback(("Login Successfull"),
+        window.location.href = "main.html");
+        
+        }
+        
+    }
+  
+
+    </script>
+</body>
+</html>
